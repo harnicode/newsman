@@ -131,6 +131,13 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.15.0"
+  newsman_posts_api:
+    dependency: "direct main"
+    description:
+      path: "packages/apis/posts_api"
+      relative: true
+    source: path
+    version: "0.0.1"
   path:
     dependency: transitive
     description:

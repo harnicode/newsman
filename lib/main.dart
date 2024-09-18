@@ -1,6 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:newsman_posts_api/newsman_posts_api.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  final api = PostApiLocal();
+
+  final posts = await api.fetchAllPosts();
+
+  debugPrint('${posts.length}');
+
   runApp(const MyApp());
 }
 
