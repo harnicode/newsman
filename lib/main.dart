@@ -6,9 +6,13 @@ void main() async {
 
   final api = PostApiLocal();
 
-  final posts = await api.fetchAllPosts();
+  final (:exception, :response) = await api.getAllPosts();
 
-  debugPrint('${posts.length}');
+  if (exception != null) {
+    debugPrint(exception.message);
+  } else {
+    debugPrint(response!.posts[24].title);
+  }
 
   runApp(const MyApp());
 }

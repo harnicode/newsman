@@ -1,9 +1,6 @@
 library newsman_posts_api;
 
+export 'src/exception_models/exception_models.dart';
+export 'src/response_models/response_models.dart';
+export 'src/post_api_abstract.dart';
 export 'src/post_api_local.dart';
-
-/// A Calculator.
-class Calculator {
-  /// Returns [value] plus 1.
-  int addOne(int value) => value + 1;
-}
