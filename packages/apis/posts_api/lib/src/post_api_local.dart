@@ -10,8 +10,10 @@ import 'response_models/response_models.dart';
 class PostApiLocal extends PostApi {
   final _completer = Completer<List<PostApiPostModel>>();
 
-  PostApiLocal() {
-    rootBundle.loadString('assets/json/posts.json').then((value) {
+  final String assetPath;
+
+  PostApiLocal({this.assetPath = 'assets/posts.json'}) {
+    rootBundle.loadString(assetPath).then((value) {
       final List<dynamic> data = jsonDecode(value);
       final List<PostApiPostModel> posts = data.map((item) {
         return PostApiPostModel.fromJson(item);

@@ -6,15 +6,15 @@ import 'package:newsman_posts_api/newsman_posts_api.dart';
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
 
-  test('getAllPosts() throws appropriate exception', () async {
+  test('PostApiLocal.getAllPosts() returns the list of posts', () async {
     final api = PostApiLocal();
 
     final (:exception, :response) = await api.getAllPosts();
 
-    const isException = TypeMatcher<PostApiFatalException>();
+    const isResult = TypeMatcher<PostApiGetPostsReponse>();
 
-    expect(exception, isException);
-    expect(exception!.code, 500);
-    expect(response, null);
+    expect(exception, null);
+    expect(response, isResult);
+    expect(response!.posts.length, 100);
   });
 }

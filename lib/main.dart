@@ -4,7 +4,7 @@ import 'package:newsman_posts_api/newsman_posts_api.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  final api = PostApiLocal();
+  final api = PostApiLocal(assetPath: 'assets/json/posts.json');
 
   final (:exception, :response) = await api.getAllPosts();
 
