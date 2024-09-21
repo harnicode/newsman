@@ -36,6 +36,8 @@ dependencies:
   cupertino_icons: ^1.0.8
   newsman_posts_api:
     path: packages/apis/posts_api
+  newsman_posts_repository:
+    path: packages/repos/post_repository
 
 dev_dependencies:
   flutter_test:
