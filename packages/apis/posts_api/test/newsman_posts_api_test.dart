@@ -49,4 +49,19 @@ void main() {
     expect(exception, isException);
     expect(response, null);
   });
+
+  test('PostApiHttp.getAllPosts() returns a fatal request exception', () async {
+    final api = PostApiHttp(
+      options: BaseOptions(
+        baseUrl: 'https://jsonplaceholde.org/a',
+      ),
+    );
+
+    final (:exception, :response) = await api.getAllPosts();
+
+    const isException = TypeMatcher<PostApiFatalException>();
+
+    expect(exception, isException);
+    expect(response, null);
+  });
 }
