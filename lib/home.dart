@@ -67,7 +67,6 @@ class _HomeState extends State<Home> {
                     height: 200,
                     margin: const EdgeInsets.only(right: 15),
                     decoration: BoxDecoration(
-                      color: Colors.green,
                       image: DecorationImage(
                         image: NetworkImage(
                           blogPosts[index].image.toString(),
@@ -83,10 +82,11 @@ class _HomeState extends State<Home> {
                         Text(
                           blogPosts[index].title.toString(),
                           style: const TextStyle(
-                              fontSize: 16, fontWeight: FontWeight.bold),
+                              fontSize: 14, fontWeight: FontWeight.bold),
                         ),
                         Text(
-                          'Published : ${blogPosts[index].metadata.publishedAt.toString()}',
+                          'Published: ${blogPosts[index].metadata.publishedAt.toString().split(' ')[0]}',
+                          style: const TextStyle(fontSize: 13),
                         ),
                       ],
                     ),
