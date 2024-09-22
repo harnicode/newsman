@@ -12,8 +12,8 @@ class NewsmanApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Home(),
+    return MaterialApp(
+      home: Home(blogPostRepo: postRepository),
     );
   }
 }
