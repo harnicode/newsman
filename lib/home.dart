@@ -60,7 +60,39 @@ class _HomeState extends State<Home> {
                       spreadRadius: 2.0,
                     ),
                   ]),
-              child: Text(blogPosts[index].title.toString()),
+              child: Row(
+                children: [
+                  Container(
+                    width: 140,
+                    height: 200,
+                    margin: const EdgeInsets.only(right: 15),
+                    decoration: BoxDecoration(
+                      color: Colors.green,
+                      image: DecorationImage(
+                        image: NetworkImage(
+                          blogPosts[index].image.toString(),
+                        ),
+                        fit: BoxFit.fill,
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          blogPosts[index].title.toString(),
+                          style: const TextStyle(
+                              fontSize: 16, fontWeight: FontWeight.bold),
+                        ),
+                        Text(
+                          'Published : ${blogPosts[index].metadata.publishedAt.toString()}',
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             );
           },
         ),
