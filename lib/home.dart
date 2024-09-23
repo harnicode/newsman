@@ -49,6 +49,7 @@ class Home extends StatelessWidget {
               final published = fineFormat.format(publishedDate);
 
               return Card(
+                clipBehavior: Clip.hardEdge,
                 child: Column(
                   children: [
                     Image.network(post.image),
