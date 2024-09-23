@@ -38,6 +38,7 @@ dependencies:
     path: packages/apis/posts_api
   newsman_posts_repository:
     path: packages/repos/post_repository
+  intl: ^0.19.0
 
 dev_dependencies:
   flutter_test:
