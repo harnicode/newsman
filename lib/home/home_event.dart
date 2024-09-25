@@ -1,5 +1,13 @@
 abstract class HomeEvent {}
 
-class SelectPost extends HomeEvent {}
+class SelectPost extends HomeEvent {
+  final String index;
 
-class DeSelectPost extends HomeEvent {}
+  SelectPost(this.index);
+}
+
+class DeSelectPost extends HomeEvent {
+  final String index;
+
+  DeSelectPost(this.index);
+}
