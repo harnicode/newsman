@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
+import 'package:newsman/home/home_bloc.dart';
 import 'package:newsman_posts_repository/newsman_posts_repository.dart';
 
 import 'home_cubit.dart';
@@ -31,15 +32,15 @@ class Home extends StatelessWidget {
               child: Text('There was an error fetching posts'),
             );
           }
-
+    
           final posts = snapshot.data!;
-
+    
           if (posts.isEmpty) {
             return const Center(
               child: Text('Waiting for the first post!'),
             );
           }
-
+    
           return ListView.builder(
             itemCount: posts.length,
             itemBuilder: (context, index) {
@@ -47,10 +48,10 @@ class Home extends StatelessWidget {
               final publishedAt = post.metadata.publishedAt;
               final dateFormat = DateFormat('dd/MM/yyyy HH:mm:ss');
               final fineFormat = DateFormat('EEEE MMMM d, yyyy');
-
+    
               final publishedDate = dateFormat.parse(publishedAt);
               final published = fineFormat.format(publishedDate);
-
+    
               return BlocBuilder<HomeCubit, HomeState>(
                 builder: (context, state) {
                   return GestureDetector(
@@ -73,7 +74,8 @@ class Home extends StatelessWidget {
                         children: [
                           Image.network(post.image),
                           Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 10),
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 10),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
