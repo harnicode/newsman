@@ -12,6 +12,7 @@ dependencies:
     sdk: flutter
   newsman_posts_api:
     path: ../../apis/posts_api
+  flutter_bloc: ^8.1.6
 
 dev_dependencies:
   flutter_test:

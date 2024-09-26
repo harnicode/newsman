@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:newsman/home/home_page.dart';
+import 'package:newsman/home/home.dart';
 import 'package:newsman_posts_repository/newsman_posts_repository.dart';
 
 class NewsmanApp extends StatelessWidget {
