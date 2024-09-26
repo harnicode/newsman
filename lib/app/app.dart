@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:newsman/home/home_page.dart';
 import 'package:newsman_posts_repository/newsman_posts_repository.dart';
 
@@ -13,8 +14,9 @@ class NewsmanApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: HomePage(
-        fetchPosts: postRepository.getAllPosts,
+      home: RepositoryProvider.value(
+        value: postRepository,
+        child: const HomePage(),
       ),
     );
   }

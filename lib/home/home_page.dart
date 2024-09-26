@@ -7,14 +7,16 @@ import 'bloc/home_bloc.dart';
 // import 'home_cubit.dart';
 
 class HomePage extends StatelessWidget {
-  final Future<List<PostModel>> Function() fetchPosts;
-  const HomePage({super.key, required this.fetchPosts});
+  const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => HomeBloc(),
-      child: Home(fetchPosts: fetchPosts),
+      create: (context) {
+        final repo = context.read<PostRepository>();
+        return HomeBloc(postRepository: repo);
+      },
+      child: const Home(),
     );
   }
 }
