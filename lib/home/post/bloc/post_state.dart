@@ -1,12 +1,14 @@
-part of 'home_bloc.dart';
+part of 'post_bloc.dart';
 
-class HomeState {
+class PostState {
   List<PostModel> posts;
   Set<String> selections;
+  bool isSelectionActive;
 
-  HomeState({
+  PostState({
     this.posts = const [],
-    required this.selections,
+    this.selections = const {},
+    this.isSelectionActive = false,
   });
 
   @override
@@ -14,13 +16,15 @@ class HomeState {
     return """HomeState($selections)""";
   }
 
-  HomeState copyWith({
+  PostState copyWith({
     List<PostModel>? posts,
     Set<String>? selections,
+    bool? isSelectionActive,
   }) {
-    return HomeState(
+    return PostState(
       posts: posts ?? this.posts,
       selections: selections ?? this.selections,
+      isSelectionActive: isSelectionActive ?? this.isSelectionActive,
     );
   }
 }

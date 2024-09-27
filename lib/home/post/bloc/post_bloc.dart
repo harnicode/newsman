@@ -1,15 +1,15 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:newsman_posts_repository/newsman_posts_repository.dart';
 
-part 'home_event.dart';
-part 'home_state.dart';
+part 'post_event.dart';
+part 'post_state.dart';
 
-class HomeBloc extends Bloc<HomeEvent, HomeState> {
+class PostBloc extends Bloc<PostEvent, PostState> {
   final PostRepository _postRepository;
 
-  HomeBloc({required PostRepository postRepository})
+  PostBloc({required PostRepository postRepository})
       : _postRepository = postRepository,
-        super(HomeState(selections: {})) {
+        super(PostState()) {
     on<FetchPostsRequestedEvent>(_handleFetchPosts);
     on<ToggleSelectionEvent>(_handleSelectionToggle);
 
@@ -22,7 +22,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   }
 
   void _handleSelectionToggle(ToggleSelectionEvent event, Emitter emit) {
-    final selections = state.selections;
+    final selections = Set<String>.from(state.selections);
 
     if (selections.contains(event.postId)) {
       selections.remove(event.postId);
@@ -30,6 +30,17 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       selections.add(event.postId);
     }
 
-    emit(state.copyWith(selections: selections));
+    if (selections.isEmpty) {
+      emit(state.copyWith(
+        selections: selections,
+        isSelectionActive: false,
+      ));
+      return;
+    }
+
+    emit(state.copyWith(
+      selections: selections,
+      isSelectionActive: true,
+    ));
   }
 }

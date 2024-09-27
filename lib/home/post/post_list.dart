@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
+import 'package:newsman/app/n8n.dart';
 
-import 'bloc/home_bloc.dart';
+import 'bloc/post_bloc.dart';
+import 'post_route.dart';
 
-class Home extends StatelessWidget {
-  const Home({
+class PostList extends StatelessWidget {
+  const PostList({
     super.key,
   });
 
@@ -13,9 +15,9 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Home Feed'),
+        title: const Text('Posts Page'),
       ),
-      body: BlocBuilder<HomeBloc, HomeState>(
+      body: BlocBuilder<PostBloc, PostState>(
         builder: (context, state) {
           if (state.posts.isEmpty) {
             return const Center(
@@ -36,8 +38,22 @@ class Home extends StatelessWidget {
 
               return GestureDetector(
                 onTap: () {
-                  final bloc = context.read<HomeBloc>();
-                  bloc.add(ToggleSelectionEvent(postId: post.id));
+                  final bloc = context.read<PostBloc>();
+
+                  if (state.isSelectionActive) {
+                    bloc.add(ToggleSelectionEvent(postId: post.id));
+                    return;
+                  }
+
+                  context.navigate(
+                    PostDetailRoute(postId: post.id),
+                  );
+                },
+                onLongPress: () {
+                  if (!state.isSelectionActive) {
+                    final bloc = context.read<PostBloc>();
+                    bloc.add(ToggleSelectionEvent(postId: post.id));
+                  }
                 },
                 child: Card(
                   clipBehavior: Clip.hardEdge,

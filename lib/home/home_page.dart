@@ -1,22 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:newsman/home/home.dart';
-import 'package:newsman_posts_repository/newsman_posts_repository.dart';
+import 'package:newsman/app/n8n.dart';
 
-import 'bloc/home_bloc.dart';
-// import 'home_cubit.dart';
+import 'post/post_route.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) {
-        final repo = context.read<PostRepository>();
-        return HomeBloc(postRepository: repo);
-      },
-      child: const Home(),
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Home Feed'),
+      ),
+      body: Center(
+        child: TextButton(
+          onPressed: () => context.navigate(PostRoute()),
+          child: const Text('View All Posts'),
+        ),
+      ),
     );
   }
 }
