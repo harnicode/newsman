@@ -1,3 +1,3 @@
-1. Fetch all posts by calling PostRepository.getAllPosts()
-2. Render the list of posts on the Home widget
-3. Eeach rendered post must show the title, image, and publishedAt (user friendly date)
+1. Implement `users_api` package using [the users endpoint](https://jsonplaceholder.org/users)
+2. Implement `users_repository` package to return list of all users
+3. Implement the users feature similar to posts feature
