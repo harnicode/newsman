@@ -5,6 +5,7 @@ import 'package:newsman/app/navigation.dart';
 import 'package:newsman/features/home/home_route.dart';
 
 import 'bloc/posts_bloc.dart';
+import 'post_detail/post_detail_route.dart';
 
 class PostsPage extends StatelessWidget {
   const PostsPage({super.key});
@@ -41,7 +42,19 @@ class PostsPage extends StatelessWidget {
               return GestureDetector(
                 onTap: () {
                   final bloc = context.read<PostsBloc>();
-                  bloc.add(ToggleSelectionEvent(postId: post.id));
+
+                  if (state.isSelectionActive) {
+                    bloc.add(ToggleSelectionEvent(postId: post.id));
+                    return;
+                  }
+
+                  context.navigate(PostDetailRoute(postId: post.id));
+                },
+                onLongPress: () {
+                  if (!state.isSelectionActive) {
+                    final bloc = context.read<PostsBloc>();
+                    bloc.add(ToggleSelectionEvent(postId: post.id));
+                  }
                 },
                 child: Card(
                   clipBehavior: Clip.hardEdge,

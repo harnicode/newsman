@@ -31,6 +31,9 @@ class PostsBloc extends Bloc<PostsEvent, PostsState> {
       selections.add(event.postId);
     }
 
-    emit(state.copyWith(selections: selections));
+    emit(state.copyWith(
+      isSelectionActive: selections.isNotEmpty,
+      selections: selections,
+    ));
   }
 }

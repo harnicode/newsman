@@ -3,7 +3,7 @@ import 'package:newsman/features/home/home_route.dart';
 import 'package:newsman/features/posts/posts_route.dart';
 
 final router = GoRouter(
-  initialLocation: HomeRoute().location,
+  initialLocation: PostsRoute().location,
   routes: [
     $homeRoute,
     $postsRoute,

@@ -5,11 +5,17 @@ import 'package:newsman/app/navigation.dart';
 import 'package:newsman/features/posts/bloc/posts_bloc.dart';
 import 'package:newsman_posts_repository/newsman_posts_repository.dart';
 
+import 'post_detail/post_detail_route.dart';
 import 'posts_page.dart';
 
 part 'posts_route.g.dart';
 
-@TypedGoRoute<PostsRoute>(path: '/posts')
+@TypedGoRoute<PostsRoute>(
+  path: '/posts',
+  routes: [
+    TypedGoRoute<PostDetailRoute>(path: ':postId'),
+  ],
+)
 class PostsRoute extends N8nRoute {
   @override
   String get path => location;
