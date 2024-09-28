@@ -1,15 +1,15 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:newsman_posts_repository/newsman_posts_repository.dart';
 
-part 'home_event.dart';
-part 'home_state.dart';
+part 'posts_event.dart';
+part 'posts_state.dart';
 
-class HomeBloc extends Bloc<HomeEvent, HomeState> {
+class PostsBloc extends Bloc<PostsEvent, PostsState> {
   final PostRepository _postRepository;
 
-  HomeBloc({required PostRepository postRepository})
+  PostsBloc({required PostRepository postRepository})
       : _postRepository = postRepository,
-        super(HomeState()) {
+        super(PostsState()) {
     on<FetchPostsRequestedEvent>(_handleFetchPosts);
     on<ToggleSelectionEvent>(_handleSelectionToggle);
 

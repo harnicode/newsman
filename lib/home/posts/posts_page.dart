@@ -2,18 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 
-import 'bloc/home_bloc.dart';
+import 'bloc/posts_bloc.dart';
 
-class Home extends StatelessWidget {
-  const Home({super.key});
+class PostsPage extends StatelessWidget {
+  const PostsPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Home Feed'),
+        title: const Text('Posts Feed'),
       ),
-      body: BlocBuilder<HomeBloc, HomeState>(
+      body: BlocBuilder<PostsBloc, PostsState>(
         builder: (context, state) {
           if (state.posts.isEmpty) {
             return const Center(
@@ -34,7 +34,7 @@ class Home extends StatelessWidget {
 
               return GestureDetector(
                 onTap: () {
-                  final bloc = context.read<HomeBloc>();
+                  final bloc = context.read<PostsBloc>();
                   bloc.add(ToggleSelectionEvent(postId: post.id));
                 },
                 child: Card(

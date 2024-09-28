@@ -1,10 +1,10 @@
-part of 'home_bloc.dart';
+part of 'posts_bloc.dart';
 
-class HomeState {
+class PostsState {
   Set<String> selections;
   List<PostModel> posts;
 
-  HomeState({
+  PostsState({
     this.posts = const [],
     this.selections = const {},
   });
@@ -14,11 +14,11 @@ class HomeState {
     return """HomeState($selections)""";
   }
 
-  HomeState copyWith({
+  PostsState copyWith({
     Set<String>? selections,
     List<PostModel>? posts,
   }) {
-    return HomeState(
+    return PostsState(
       selections: selections ?? this.selections,
       posts: posts ?? this.posts,
     );
