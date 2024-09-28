@@ -2,9 +2,11 @@ part of 'home_bloc.dart';
 
 class HomeState {
   Set<String> selections;
+  List<PostModel> posts;
 
   HomeState({
-    required this.selections,
+    this.posts = const [],
+    this.selections = const {},
   });
 
   @override
@@ -12,9 +14,13 @@ class HomeState {
     return """HomeState($selections)""";
   }
 
-  HomeState copyWith(Set<String>? selections) {
+  HomeState copyWith({
+    Set<String>? selections,
+    List<PostModel>? posts,
+  }) {
     return HomeState(
       selections: selections ?? this.selections,
+      posts: posts ?? this.posts,
     );
   }
 }
