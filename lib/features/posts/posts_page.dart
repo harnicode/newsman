@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
+import 'package:newsman/app/navigation.dart';
+import 'package:newsman/features/home/home_route.dart';
 
 import 'bloc/posts_bloc.dart';
 
@@ -11,6 +13,10 @@ class PostsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          onPressed: () => context.navigate(HomeRoute()),
+          icon: const Icon(Icons.arrow_back_ios),
+        ),
         title: const Text('Posts Feed'),
       ),
       body: BlocBuilder<PostsBloc, PostsState>(

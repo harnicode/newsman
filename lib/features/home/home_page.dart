@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:newsman/home/home_route.dart';
-import 'package:newsman/home/posts/posts_route.dart';
+import 'package:newsman/app/navigation.dart';
+
+import '../posts/posts_route.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -13,9 +14,7 @@ class HomePage extends StatelessWidget {
       ),
       body: Center(
         child: TextButton(
-          onPressed: () {
-            PostsRoute().go(context);
-          },
+          onPressed: () => context.navigate(PostsRoute()),
           child: const Text('View Posts'),
         ),
       ),
