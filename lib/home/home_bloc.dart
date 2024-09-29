@@ -21,18 +21,18 @@ class HomeState {
 //Define event for Home
 abstract class HomeEvent {}
 
-class HandleTap extends HomeEvent {
+class ToggleSelectionEvent extends HomeEvent {
   final String id;
-  HandleTap(this.id);
+  ToggleSelectionEvent(this.id);
 }
 
 //Define the Bloc to manage the home state
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
   HomeBloc() : super(HomeState(selections: {})) {
-    on<HandleTap>(_onToggleSelection);
+    on<ToggleSelectionEvent>(onToggleSelection);
   }
-//Now handle the HandleTap to update the state
-  void _onToggleSelection(HandleTap event, Emitter<HomeState> emit) {
+//Now handle the toggleSelectionEvent to update the state
+  void onToggleSelection(ToggleSelectionEvent event, Emitter<HomeState> emit) {
     final newSelections = Set<String>.from(state.selections);
 
     //define condition to track event

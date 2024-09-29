@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
+import 'package:newsman/home/home_bloc.dart';
 import 'package:newsman_posts_repository/newsman_posts_repository.dart';
 
-import 'home_cubit.dart';
+import 'home_bloc.dart';
 
 class Home extends StatelessWidget {
   final Future<List<PostModel>> Function() fetchPosts;
@@ -51,12 +52,12 @@ class Home extends StatelessWidget {
               final publishedDate = dateFormat.parse(publishedAt);
               final published = fineFormat.format(publishedDate);
 
-              return BlocBuilder<HomeCubit, HomeState>(
+              return BlocBuilder<HomeBloc, HomeState>(
                 builder: (context, state) {
                   return GestureDetector(
                     onTap: () {
-                      final cubit = context.read<HomeCubit>();
-                      cubit.handleTap(post.id);
+                      final bloc = context.read<HomeBloc>();
+                      bloc.add(ToggleSelectionEvent(post.id));
                     },
                     child: Card(
                       clipBehavior: Clip.hardEdge,
